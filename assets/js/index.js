@@ -1,3 +1,11 @@
+//variables seteadas iniciales
+
+//boton
+const boton = document.querySelector('#btnBuscar');
+//seleccionar div de propiedades
+const propiedades = document.querySelector('#propiedades')
+
+
 const propiedadesJSON = [
     {
       nombre: "Casa de campo",
@@ -41,36 +49,74 @@ const propiedadesJSON = [
     },
     {
       nombre: "Mansión",
-      descripcion: "Vive una vida lujosa en la mansión de tus sueños ",
+      descripcion: "Vive una vida lujosa en la mansión de tus sueños",
       src:
         "https://resizer.glanacion.com/resizer/fhK-tSVag_8UGJjPMgWrspslPoU=/768x0/filters:quality(80)/cloudfront-us-east-1.images.arcpublishing.com/lanacionar/CUXVMXQE4JD5XIXX4X3PDZAVMY.jpg",
       cuartos: 5,
       metros: 500
     }
   ];
-  
+
+
+
+
+   
+
+
 
   //Agrear evento Click para el boton
-  const boton = document.querySelector('nav button');
-  boton.addEventListener("click", function (){
+  boton.addEventListener("click", () =>  {
+   //Capturamos los valores de los input
+   let dormitorios = document.getElementById("cuartos").value;
+   let valorMin = document.getElementById("valorMin").value;
+   let valorMax = document.getElementById("valorMax").value;
+   // total de resultados
+   let total = document.getElementById("total");
+   totalConteo = 0;
+   //declaramos la variable para el html
+ let templateFiltrado = '';
+//condicion que designa que si algun espacio está vacío, se alerte
+ if (dormitorios == '' || valorMin == '' || valorMax == '') {
+  alert('Por favor, rellene todos los datos')
+ } else {
+ //usamos un for para leer los valores del array
+ for (let propiedad of propiedadesJSON) {
+  //condicion que debe cumplirse para sumar al contador
+  if (propiedad.cuartos >= dormitorios && (propiedad.metros >= valorMin && propiedad.metros <= valorMax))
+  totalConteo++; 
+  // si se cumplen las condiciones, se aplica este template para el objeto
+  if (propiedad.cuartos >= dormitorios && (propiedad.metros >= valorMin && propiedad.metros <= valorMax))
+  //aplicamos el template, lo concatenamos al valor vacio que declaramos antes
+  templateFiltrado += 
+  `
+  <div class="propiedades">
+            <div class="propiedad">
+                <div class="img" style="background-image: url('${propiedad.src}')"></div>
+                <section>
+                    <h5>${propiedad.nombre}</h5>
+                    <div class="d-flex justify-content-between">
+                        <p>Cuartos: ${propiedad.cuartos}</p>
+                        <p>Metros: ${propiedad.metros}</p>
+                    </div>
+                    <p class="my-3">${propiedad.descripcion}</p>
+                    <button class="btn btn-info ">Ver más</button>
+                </section>
+            </div>
+        </div>
+        `
+       
+        
+}
 
-    alert('test');
 
-     //Capturamos los valores de los input
-    let dormitorios = document.getElementById("cuartos").value;
-    let valorMin = document.getElementById("valorMin").value;
-    let valorMax = document.getElementById("valorMax").value;
-  }
-   
-  )
+       
+//se actualiza el HTML
+propiedades.innerHTML = templateFiltrado;
+total.innerHTML = totalConteo;
+ }
 
-
-//si el valor de tal variable esta dentro del rango que se busca, entregar estos objetos
-
-//act - cambio de color por valor de objeto
-//act - templates
+  })
 
 
-  //crear template
 
-  
+

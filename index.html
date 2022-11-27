@@ -16,39 +16,41 @@
     <nav>
         <section>
             <div>
-                <p>Cantidad de cuartos:</p> <input min="0" class="form-control w-50 m-auto" type="number">
+                <p>Cantidad de cuartos:</p> <input id="cuartos" min="0" class="form-control w-50 m-auto" type="number">
             </div>
             <div>
                 <span>Metros cuadrados </span>
                 <div class="d-flex">
                     <div class="me-4">
-                        <p>desde: </p><input min="0" class="form-control " type="number">
+                        <p>desde: </p><input id="valorMin" min="0" class="form-control " type="number">
                     </div>
                     <div>
                         <p> hasta:</p>
-                        <input min="0" class="form-control " type="number">
+                        <input id="valorMax" min="0" class="form-control " type="number">
                     </div>
                 </div>
             </div>
         </section>
 
-        <button class="btn btn-warning">Buscar</button>
+        <button id="btnBuscar" class="btn btn-warning">Buscar</button>
+
+        <h4 class="py-3">Total: <span id="total"></span></h4>
     </nav>
 
 
 
+  
 
-    <section id="Propiedades">
-        <h4 class="py-3">Total: <span>0</span></h4>
-
+    <section id="propiedades">
+        
         <div class="propiedades">
             <div class="propiedad">
                 <div class="img" style="background-image: url('https://resizer.glanacion.com/resizer/fhK-tSVag_8UGJjPMgWrspslPoU=/768x0/filters:quality(80)/cloudfront-us-east-1.images.arcpublishing.com/lanacionar/CUXVMXQE4JD5XIXX4X3PDZAVMY.jpg')"></div>
                 <section>
                     <h5>Mansión</h5>
                     <div class="d-flex justify-content-between">
-                        <p>Cuartos: 2</p>
-                        <p>Metros: 170</p>
+                        <p>Cuartos: 5</p>
+                        <p>Metros: 500</p>
                     </div>
                     <p class="my-3">Mansión gigante</p>
                     <button class="btn btn-info ">Ver más</button>

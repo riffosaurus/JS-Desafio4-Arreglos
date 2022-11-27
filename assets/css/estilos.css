@@ -52,3 +52,7 @@ nav div{
 .propiedad section p{
     margin: 0px
 }
+
+.py-3 {
+    padding: 0px;
+}
